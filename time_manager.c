@@ -4,7 +4,7 @@
 
 
 int main(void) {
-  
+  time_manager_init();
   
   return 0;
 }
