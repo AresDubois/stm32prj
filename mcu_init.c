@@ -22,9 +22,13 @@ void mcu_init(void) {
 
 void time_manager_init(void) {
   REG(RCC_APB2_ENABLE) |= 1 << 4; // clock port C
-  REG(RCC_BACKUP_CONTROL) |=  2 << 8; // clock RTC
+  REG(RCC_BACKUP_CONTROL) |=  1 << 8; // RTC clock source - LSE
   for (volatile uint32_t count = 0; count < 10;) {
     count++;
   } 
   REG(RCC_BACKUP_CONTROL) |=  1 << 15; // clock RTC 
+  REG(RCC_BACKUP_CONTROL) |=  1 ; // LSE enable
+  for (volatile uint32_t count = 0; count < 10;) {
+    count++;
+  } 
 }
